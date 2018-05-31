@@ -7,6 +7,7 @@ int version, cities, hotels, flights, mincities;
 
 vector<string> vcities;
 vector< vector<string> > vhotels;
+vector< vector<bool> > vflights;
 
 void start ();
 void objects ();
@@ -28,8 +29,9 @@ int main(int argc, char** argv)
     cerr << "<numberOfHotelsByCity>: ";
     cin >> hotels;
     vhotels = vector<vector<string> >(cities,vector<string>(hotels));
-    cerr << "<numberOfFlights>: ";
+    cerr << "<numberOfFlights(outdegreebycity, < cities)>: ";
     cin >> flights;
+    vflights = vector<vector<bool> >(cities,vector<bool>(cities,false));
     cerr << "<numberOfCitiesToVisit>: ";
     cin >> mincities;
     //optional extra version params;
@@ -79,7 +81,7 @@ string gensynIncr(string g) {
 
 void objects() {
   cout << "  (:objects" << endl;
-  cout << "    ";
+  cout << "    Origin ";
   string gensyn = "A";
   for(int i=0; i<cities; i++) {
     vcities[i] = gensyn;
@@ -102,9 +104,76 @@ void objects() {
   cout << "  )" << endl;
 }
 
+void printHotelAts();
+void printFlights();
+void printFunctionInitialisations();
+
+void init () {
+  cout << "  (:init" << endl;
+  
+  cout << "    (currentLocation Origin)" << endl;
+  cout << endl;
+  
+  printHotelAts();
+  cout << endl;
+  
+  printFlights();
+  cout << endl;
+  
+  printFunctionInitialisations();
+  cout << endl;
+  
+  cout << "  )" << endl;
+}
+
+void goal () {
+  cout << "  (:goal" << endl;
+  cout << "    (>= (citiesVisited) " << mincities << ")" << endl;
+  cout << "  )" << endl;
+}
 
 
-void init (){}
-void goal (){}
 
+
+
+
+
+
+
+
+
+void printHotelAts(){
+  for (int i=0; i<vhotels.size(); i++){
+    for(int j=0; j<vhotels[i].size(); j++) {
+      cout << "    (hotelAt " << "hotel" + vhotels[i][j] << " " << "city"+vcities[i] << ")" << endl;
+    }
+  }
+}
+void printFlights() {
+  srand((unsigned)time(0)); 
+  for (int i=0; i<vcities.size(); i++) {
+    cout << "    (flight Origin " << "city"+vcities[i] << ")" << endl;
+  }
+  for (int i=0; i<vcities.size(); i++) {
+    int x = 0;
+    int r;
+    while(x < flights) {
+      r = (rand()%cities); 
+      if(vflights[i][r] or r==i) x--;
+      else vflights[i][r] = true;
+      x++;
+    }
+  }
+  for (int i=0; i<vflights.size(); i++) {
+    for (int j=0; j<vflights[i].size(); j++) {
+      if(vflights[i][j])
+        cout << "    (flight " << "city"+vcities[i] << " " << "city"+vcities[j] << ")" << endl;
+  }  }
+  
+  
+}
+void printFunctionInitialisations() {
+  
+  cout << "    (= (citiesVisited) 0)" << endl;
+}
 
