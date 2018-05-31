@@ -1,12 +1,9 @@
 (define (problem baseTest)
   (:domain worldsEndAndBeyond)
-  
   (:objects
     Origin Barcelona Madrid Londres Moscu - city
     BH1 BH2 MaH LH MoH - hotel
   )
-  
-  
   (:init
     (currentLocation Origin)
     
@@ -21,22 +18,17 @@
     (flight Origin Londres)
     (flight Origin Moscu)
     (flight Moscu Madrid)
-    (flight Moscu Barcelona)
     (flight Moscu Londres)
-    (flight Barcelona Moscu)
-    (flight Barcelona Madrid)
-    (flight Barcelona Londres)
     (flight Londres Barcelona)
-    (flight Londres Moscu)
-    (flight Londres Madrid)
+    (flight Barcelona Londres)
     (flight Madrid Londres)
-    (flight Madrid Moscu)
-    (flight Madrid Barcelona)
     
     (= (citiesVisited) 0)
     (= (totalDays) 0)
     (= (minDaysInCity) 1)
     (= (maxDaysInCity) 3)
+    
+    (= (totalcost) 0)
     
     (= (stayDuration Origin) 0)
     (= (stayDuration Barcelona) 0)
@@ -44,24 +36,31 @@
     (= (stayDuration Londres) 0)
     (= (stayDuration Moscu) 0)
     
-    (= (cityInterest Origin) 0)
-    (= (cityInterest Barcelona) 3)
-    (= (cityInterest Madrid) 1)
-    (= (cityInterest Londres) 3)
-    (= (cityInterest Moscu) 1)
+    (= (hotelcost BH1) 50)
+    (= (hotelcost BH2) 500)
+    (= (hotelcost MaH) 1000)
+    (= (hotelcost LH) 700)
+    (= (hotelcost MoH) 400)
     
-    (= (totalInterest) 0)
-    
+    (= (flightcost Origin Barcelona) 0)
+    (= (flightcost Origin Madrid) 0)
+    (= (flightcost Origin Londres) 0)
+    (= (flightcost Origin Moscu) 0)
+    (= (flightcost Moscu Madrid) 200)
+    (= (flightcost Moscu Londres) 100)
+    (= (flightcost Londres Barcelona) 50)
+    (= (flightcost Barcelona Londres) 50)
+    (= (flightcost Madrid Londres) 100)
   )
   
   (:goal 
     (and 
       (>= (citiesVisited) 2)
-      (>= (totalDays) 4)
+      (>= (totalDays) 11)
     )
   )
-  
-  (:metric 
-    minimize (totalInterest)
-    )
+  (:metric
+    minimize
+      (totalcost)
+  )
 )
