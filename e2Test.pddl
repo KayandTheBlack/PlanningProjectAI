@@ -1,9 +1,12 @@
 (define (problem baseTest)
   (:domain worldsEndAndBeyond)
+  
   (:objects
     Origin Barcelona Madrid Londres Moscu - city
     BH1 BH2 MaH LH MoH - hotel
   )
+  
+  
   (:init
     (currentLocation Origin)
     
@@ -18,8 +21,11 @@
     (flight Origin Londres)
     (flight Origin Moscu)
     (flight Moscu Madrid)
+    (flight Moscu Barcelona)
+    (flight Barcelona Moscu)
     (flight Moscu Londres)
     (flight Londres Barcelona)
+    (flight Londres Madrid)
     (flight Barcelona Londres)
     (flight Madrid Londres)
     
@@ -33,12 +39,23 @@
     (= (stayDuration Madrid) 0)
     (= (stayDuration Londres) 0)
     (= (stayDuration Moscu) 0)
+    
+    (= (cityInterest Origin) 0)
+    (= (cityInterest Barcelona) 3)
+    (= (cityInterest Madrid) 1)
+    (= (cityInterest Londres) 3)
+    (= (cityInterest Moscu) 3)
+    
+    (= (totalInterest) 0)
+    
   )
   
   (:goal 
     (and 
       (>= (citiesVisited) 2)
-      (>= (totalDays) 11)
+      (>= (totalDays) 4)
     )
   )
+  
+  (:metric minimize (totalInterest))
 )

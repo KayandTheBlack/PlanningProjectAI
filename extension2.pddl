@@ -13,6 +13,8 @@
     (minDaysInCity)
     (maxDaysInCity)
     (stayDuration ?c - city)
+    (cityInterest ?c - city)
+    (totalInterest)
   )
   
   ( :action flyAndStay
@@ -31,6 +33,7 @@
       (increase (citiesVisited) 1)
       (increase (stayDuration ?to) (minDaysInCity))
       (increase (totalDays) (minDaysInCity))
+      (increase (totalInterest) (cityInterest ?to))
     )
   )
   ( :action IncreaseStay
