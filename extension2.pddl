@@ -1,5 +1,5 @@
 (define (domain worldsEndAndBeyond)
-  (:requirements :adl :typing :fluents :action-costs)
+  (:requirements :adl :typing :fluents)
   (:types hotel city - object)
   (:predicates
     (hotelAt ?h - hotel ?c - city)
