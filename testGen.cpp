@@ -5,6 +5,8 @@ using namespace std;
 
 int version, cities, hotels, flights, mincities;
 
+int minDaysinCity, maxDaysinCity, totalDays; //e1
+
 vector<string> vcities;
 vector< vector<string> > vhotels;
 vector< vector<bool> > vflights;
@@ -35,17 +37,15 @@ int main(int argc, char** argv)
     cerr << "<numberOfCitiesToVisit>: ";
     cin >> mincities;
     //optional extra version params;
+    if(version > 0) {
+      cerr << "<minDaysinCity>: ";
+      cin >> minDaysinCity;
+      cerr << "<maxDaysinCity>: ";
+      cin >> maxDaysinCity;
+      cerr << "<minTotalDays>: ";
+      cin >> totalDays;
+    }
     start();
-    
-    
-    //cout << version << endl;
-    /*cout << "You have entered " << argc
-         << " arguments:" << "\n";
- 
-    for (int i = 0; i < argc; ++i)
-        cout << argv[i] << "\n";
-    string a = argv[0];
-    cout << "TEST: " << a << endl;*/
     return 0;
 }
 
@@ -128,7 +128,17 @@ void init () {
 
 void goal () {
   cout << "  (:goal" << endl;
-  cout << "    (>= (citiesVisited) " << mincities << ")" << endl;
+  if(version == 0)
+    cout << "    (>= (citiesVisited) " << mincities << ")" << endl;
+  else if(version == 1){
+    cout << "    (and" << endl;
+    cout << "      (>= (citiesVisited) " << mincities << ")" << endl;
+    cout << "      (>= (totalDays) " << totalDays << ")" << endl;
+    cout << "    )" << endl;
+  }
+  
+  
+  
   cout << "  )" << endl;
 }
 
@@ -175,5 +185,15 @@ void printFlights() {
 void printFunctionInitialisations() {
   
   cout << "    (= (citiesVisited) 0)" << endl;
+  //e1 initialisations:
+  if(version > 0) {
+    cout << "    (= (totalDays) 0)" << endl;
+    cout << "    (= (minDaysInCity) " << minDaysinCity << ")" << endl;
+    cout << "    (= (maxDaysInCity) " << maxDaysinCity << ")" << endl;
+    cout << endl;
+    cout << "    (= (stayDuration Origin) 0)" << endl;
+    for(int i=0; i<vcities.size(); i++)
+      cout << "    (= (stayDuration " << "city"+vcities[i] << ") 0)" << endl;
+  }
 }
 
