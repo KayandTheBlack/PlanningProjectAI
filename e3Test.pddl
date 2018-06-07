@@ -52,11 +52,13 @@
     (= (flightcost Barcelona Londres) 50)
     (= (flightcost Madrid Londres) 100)
   )
-    GILIPOLLAS FALTA MINIMO Y MAXIMO PRECIO
+  
   (:goal 
     (and 
       (>= (citiesVisited) 2)
       (>= (totalDays) 11)
+      (>= (totalcost) 200)
+      (<= (totalcost) 7000)
     )
   )
   (:metric
