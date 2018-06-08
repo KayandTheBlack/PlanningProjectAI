@@ -1,0 +1,60 @@
+
+ff: parsing domain file
+domain 'WORLDSENDANDBEYOND' defined
+ ... done.
+ff: parsing problem file
+problem 'AUTOGEN' defined
+ ... done.
+
+
+metric established (normalized to minimize): ((1.00*[RF0](TOTALINTEREST)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF0](TOTALINTEREST)) - () + 0.00)
+
+advancing to distance:   12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: FLYANDSTAY ORIGIN CITYB HOTELB_A
+        1: FLYANDSTAY CITYB CITYC HOTELC_A
+        2: FLYANDSTAY CITYC CITYF HOTELF_A
+        3: FLYANDSTAY CITYF CITYM HOTELM_A
+        4: INCREASESTAY CITYM
+        5: INCREASESTAY CITYM
+        6: FLYANDSTAY CITYM CITYH HOTELH_A
+        7: FLYANDSTAY CITYH CITYD HOTELD_A
+        8: FLYANDSTAY CITYD CITYO HOTELO_A
+        9: INCREASESTAY CITYO
+       10: INCREASESTAY CITYO
+       11: FLYANDSTAY CITYO CITYN HOTELN_A
+       12: FLYANDSTAY CITYN CITYL HOTELL_A
+       13: FLYANDSTAY CITYL CITYK HOTELK_A
+       14: INCREASESTAY CITYN
+       15: INCREASESTAY CITYN
+       16: FLYANDSTAY CITYK CITYI HOTELI_A
+       17: FLYANDSTAY CITYI CITYA HOTELA_A
+     
+
+time spent:    0.00 seconds instantiating 196 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 47 facts and 195 actions
+               0.00 seconds creating final representation with 46 relevant facts, 34 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.45 seconds searching, evaluating 22282 states, to a max depth of 0
+               0.45 seconds total time
+

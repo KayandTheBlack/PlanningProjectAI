@@ -1,0 +1,54 @@
+
+ff: parsing domain file
+domain 'WORLDSENDANDBEYOND' defined
+ ... done.
+ff: parsing problem file
+problem 'AUTOGEN' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+advancing to distance:   12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: FLYANDSTAY ORIGIN CITYO HOTELO_A
+        1: FLYANDSTAY CITYO CITYM HOTELM_A
+        2: FLYANDSTAY CITYM CITYN HOTELN_A
+        3: FLYANDSTAY CITYN CITYB HOTELB_A
+        4: FLYANDSTAY CITYB CITYI HOTELI_A
+        5: FLYANDSTAY CITYI CITYC HOTELC_A
+        6: FLYANDSTAY CITYC CITYK HOTELK_A
+        7: FLYANDSTAY CITYK CITYD HOTELD_A
+        8: FLYANDSTAY CITYD CITYJ HOTELJ_A
+        9: FLYANDSTAY CITYJ CITYE HOTELE_A
+       10: FLYANDSTAY CITYE CITYH HOTELH_A
+       11: FLYANDSTAY CITYH CITYG HOTELG_A
+     
+
+time spent:    0.00 seconds instantiating 196 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 47 facts and 195 actions
+               0.00 seconds creating final representation with 46 relevant facts, 33 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 108 states, to a max depth of 0
+               0.00 seconds total time
+
