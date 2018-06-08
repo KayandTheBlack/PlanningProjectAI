@@ -1,0 +1,101 @@
+(define (problem autogen)
+  (:domain worldsEndAndBeyond)
+
+  (:objects
+    Origin cityA cityB cityC cityD cityE - city
+    hotelA_A hotelA_B hotelB_A hotelB_B hotelC_A hotelC_B hotelD_A hotelD_B hotelE_A hotelE_B - hotel
+  )
+
+  (:init
+    (currentLocation Origin)
+
+    (hotelAt hotelA_A cityA)
+    (hotelAt hotelA_B cityA)
+    (hotelAt hotelB_A cityB)
+    (hotelAt hotelB_B cityB)
+    (hotelAt hotelC_A cityC)
+    (hotelAt hotelC_B cityC)
+    (hotelAt hotelD_A cityD)
+    (hotelAt hotelD_B cityD)
+    (hotelAt hotelE_A cityE)
+    (hotelAt hotelE_B cityE)
+
+    (flight Origin cityA)
+    (flight Origin cityB)
+    (flight Origin cityC)
+    (flight Origin cityD)
+    (flight Origin cityE)
+    (flight cityA cityC)
+    (flight cityA cityE)
+    (flight cityB cityC)
+    (flight cityB cityD)
+    (flight cityC cityA)
+    (flight cityC cityB)
+    (flight cityD cityA)
+    (flight cityD cityC)
+    (flight cityE cityA)
+    (flight cityE cityD)
+
+    (= (citiesVisited) 0)
+    (= (totalDays) 0)
+    (= (minDaysInCity) 2)
+    (= (maxDaysInCity) 5)
+
+    (= (stayDuration Origin) 0)
+    (= (stayDuration cityA) 0)
+    (= (stayDuration cityB) 0)
+    (= (stayDuration cityC) 0)
+    (= (stayDuration cityD) 0)
+    (= (stayDuration cityE) 0)
+    (= (cityInterest Origin) 0)
+    (= (cityInterest cityA) 3)
+    (= (cityInterest cityB) 3)
+    (= (cityInterest cityC) 1)
+    (= (cityInterest cityD) 3)
+    (= (cityInterest cityE) 1)
+    (= (totalInterest) 0)
+    (= (totalcost) 0)
+    (= (hotelcost hotelA_A) 61)
+    (= (hotelcost hotelA_B) 211)
+    (= (hotelcost hotelB_A) 84)
+    (= (hotelcost hotelB_B) 84)
+    (= (hotelcost hotelC_A) 231)
+    (= (hotelcost hotelC_B) 65)
+    (= (hotelcost hotelD_A) 241)
+    (= (hotelcost hotelD_B) 164)
+    (= (hotelcost hotelE_A) 212)
+    (= (hotelcost hotelE_B) 182)
+
+    (= (flightcost Origin cityA) 0)
+    (= (flightcost Origin cityB) 0)
+    (= (flightcost Origin cityC) 0)
+    (= (flightcost Origin cityD) 0)
+    (= (flightcost Origin cityE) 0)
+    (= (flightcost cityA cityC) 171)
+    (= (flightcost cityA cityE) 138)
+    (= (flightcost cityB cityC) 130)
+    (= (flightcost cityB cityD) 193)
+    (= (flightcost cityC cityA) 120)
+    (= (flightcost cityC cityB) 172)
+    (= (flightcost cityD cityA) 127)
+    (= (flightcost cityD cityC) 197)
+    (= (flightcost cityE cityA) 100)
+    (= (flightcost cityE cityD) 197)
+
+  )
+
+  (:goal
+    (and
+      (>= (citiesVisited) 3)
+      (>= (totalDays) 4)
+      (>= (totalcost) 0)
+      (<= (totalcost) 100000)
+    )
+  )
+
+  (:metric 
+    minimize
+      (+ (* 1050 (totalInterest)) (totalcost))
+  )
+
+)

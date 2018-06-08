@@ -6,6 +6,12 @@ using namespace std;
 int version, cities, hotels, flights, mincities;
 
 int minDaysinCity, maxDaysinCity, totalDays; //e1
+int minCost, maxCost; //e3
+
+int baseHotelCost = 50;
+int HotelDeviation = 200;
+int baseFlightCost = 100;
+int FlightDeviation = 100;
 
 vector<string> vcities;
 vector< vector<string> > vhotels;
@@ -15,11 +21,13 @@ void start ();
 void objects ();
 void init ();
 void goal ();
+void metrics ();
 
 
 
 int main(int argc, char** argv)
 {
+    srand((unsigned)time(0)); 
     if (argc < 2) {
       cout << "USAGE: " << argv[0] << " <version 0..4>" << endl;
       return 0;
@@ -44,6 +52,13 @@ int main(int argc, char** argv)
       cin >> maxDaysinCity;
       cerr << "<minTotalDays>: ";
       cin >> totalDays;
+    } 
+    if (version >= 3) {
+      
+      cerr << "<minCost>: ";
+      cin >> minCost;
+      cerr << "<maxCost>: ";
+      cin >> maxCost;
     }
     start();
     return 0;
@@ -58,6 +73,8 @@ void start () {
     init();
     cout << endl;
     goal();
+    cout << endl;
+    metrics();
     //metrics!
     cout << endl;
     cout << ")" << endl;
@@ -130,19 +147,42 @@ void goal () {
   cout << "  (:goal" << endl;
   if(version == 0)
     cout << "    (>= (citiesVisited) " << mincities << ")" << endl;
-  else if(version == 1){
+  else if(version == 1 or version == 2){
     cout << "    (and" << endl;
     cout << "      (>= (citiesVisited) " << mincities << ")" << endl;
     cout << "      (>= (totalDays) " << totalDays << ")" << endl;
     cout << "    )" << endl;
+  } else if (version == 3 or version == 4) {
+    cout << "    (and" << endl;
+    cout << "      (>= (citiesVisited) " << mincities << ")" << endl;
+    cout << "      (>= (totalDays) " << totalDays << ")" << endl;
+    cout << "      (>= (totalcost) " << minCost << ")" << endl;
+    cout << "      (<= (totalcost) " << maxCost << ")" << endl;
+    cout << "    )" << endl;
   }
-  
-  
-  
   cout << "  )" << endl;
 }
 
 
+void metrics () {
+    if (version == 2) {
+      cout << "  (:metric " << endl;
+      cout << "    minimize (totalInterest)" << endl;
+      cout << "  )" << endl;
+    }
+    if (version == 3) {
+      cout << "  (:metric " << endl;
+      cout << "    minimize (totalcost)" << endl;
+      cout << "  )" << endl;
+    }
+    if (version == 4) {
+      cout << "  (:metric " << endl;
+      cout << "    minimize" << endl;
+      cout << "      (+ (* " << (baseFlightCost+FlightDeviation/2)*mincities + (baseHotelCost+HotelDeviation/2)*totalDays << " (totalInterest)) (totalcost))" << endl;
+      cout << "  )" << endl;
+      //we use the ponderation defined in e4Test: MeanFlightCost*citiesVisited + MeanHotelCost*totalDays
+    }
+}
 
 
 
@@ -160,7 +200,6 @@ void printHotelAts(){
   }
 }
 void printFlights() {
-  srand((unsigned)time(0)); 
   for (int i=0; i<vcities.size(); i++) {
     cout << "    (flight Origin " << "city"+vcities[i] << ")" << endl;
   }
@@ -194,6 +233,32 @@ void printFunctionInitialisations() {
     cout << "    (= (stayDuration Origin) 0)" << endl;
     for(int i=0; i<vcities.size(); i++)
       cout << "    (= (stayDuration " << "city"+vcities[i] << ") 0)" << endl;
+  }
+  if(version == 2 or version == 4) {
+    cout << "    (= (cityInterest Origin) 0)" << endl;
+    for(int i=0; i<vcities.size(); i++)
+      cout << "    (= (cityInterest " << "city"+vcities[i] << ") " << rand()%3 + 1 << ")" << endl;
+    cout << "    (= (totalInterest) 0)" << endl;
+  }
+  if(version == 3 or version == 4) {
+    cout << "    (= (totalcost) 0)" << endl;
+    //Hotel cost
+    
+    for (int i=0; i<vhotels.size(); i++) 
+      for (int j=0; j<vhotels[i].size(); j++) {
+        cout << "    (= (hotelcost " << "hotel" + vhotels[i][j] << ") " << baseHotelCost + rand()%HotelDeviation << ")" << endl;
+      }
+    cout << endl;
+    //flight cost
+    for (int i=0; i<vcities.size(); i++) 
+        cout << "    (= (flightcost Origin " << "city"+vcities[i] << ") 0)" << endl;
+    for (int i=0; i<vflights.size(); i++) {
+    for (int j=0; j<vflights[i].size(); j++) {
+      if(vflights[i][j]){
+        cout << "    (= (flightcost " << "city"+vcities[i] << " " << "city"+vcities[j] << ") " << baseFlightCost + rand()%FlightDeviation << ")" << endl;
+        }
+    }  }
+    
   }
 }
 
