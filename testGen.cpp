@@ -178,9 +178,12 @@ void metrics () {
     if (version == 4) {
       cout << "  (:metric " << endl;
       cout << "    minimize" << endl;
-      cout << "      (+ (* " << (baseFlightCost+FlightDeviation/2)*mincities + (baseHotelCost+HotelDeviation/2)*totalDays << " (totalInterest)) (totalcost))" << endl;
+      cout << "      (+ (* " << ((baseFlightCost+FlightDeviation/2)*mincities + (baseHotelCost+HotelDeviation/2)*totalDays)/(3*mincities/2) << " (totalInterest)) (totalcost))" << endl;
       cout << "  )" << endl;
-      //we use the ponderation defined in e4Test: MeanFlightCost*citiesVisited + MeanHotelCost*totalDays
+      //we use a balanced ponderation.
+      // Mean value of totalInterest is 1.5*mincities
+      // Mean cost is MeanFlightCost*citiesVisited + MeanHotelCost*totalDays
+      // Therefore, we will multiply the interest by the mean cost and divide it by mincities*1.5
     }
 }
 
