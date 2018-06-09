@@ -1,0 +1,80 @@
+
+ff: parsing domain file
+domain 'WORLDSENDANDBEYOND' defined
+ ... done.
+ff: parsing problem file
+problem 'AUTOGEN' defined
+ ... done.
+
+
+metric established (normalized to minimize): ((1.00*[RF0](TOTALCOST)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF0](TOTALCOST)) - () + 0.00)
+
+advancing to distance:   20
+                         19
+                         18
+                         17
+                         16
+                         15
+                         14
+                         12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: FLYANDSTAY ORIGIN CITYA HOTELA_A
+        1: FLYANDSTAY CITYA CITYB HOTELB_B
+        2: FLYANDSTAY CITYB CITYH HOTELH_B
+        3: FLYANDSTAY CITYH CITYE HOTELE_A
+        4: INCREASESTAY CITYE HOTELE_A
+        5: INCREASESTAY CITYE HOTELE_A
+        6: INCREASESTAY CITYB HOTELB_B
+        7: INCREASESTAY CITYB HOTELB_B
+        8: INCREASESTAY CITYH HOTELH_B
+        9: INCREASESTAY CITYB HOTELB_B
+       10: INCREASESTAY CITYH HOTELH_B
+       11: INCREASESTAY CITYH HOTELH_B
+       12: INCREASESTAY CITYA HOTELA_A
+       13: FLYANDSTAY CITYE CITYM HOTELM_B
+       14: FLYANDSTAY CITYM CITYG HOTELG_A
+       15: FLYANDSTAY CITYG CITYD HOTELD_B
+       16: FLYANDSTAY CITYD CITYK HOTELK_B
+       17: INCREASESTAY CITYE HOTELE_A
+       18: INCREASESTAY CITYM HOTELM_B
+       19: INCREASESTAY CITYA HOTELA_A
+       20: INCREASESTAY CITYA HOTELA_A
+       21: INCREASESTAY CITYM HOTELM_B
+       22: INCREASESTAY CITYM HOTELM_B
+       23: INCREASESTAY CITYK HOTELK_B
+       24: INCREASESTAY CITYK HOTELK_B
+       25: INCREASESTAY CITYK HOTELK_B
+       26: FLYANDSTAY CITYK CITYL HOTELL_A
+       27: FLYANDSTAY CITYL CITYJ HOTELJ_A
+       28: FLYANDSTAY CITYJ CITYC HOTELC_A
+       29: FLYANDSTAY CITYC CITYO HOTELO_A
+       30: FLYANDSTAY CITYO CITYN HOTELN_A
+     
+
+time spent:    0.00 seconds instantiating 120 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 77 facts and 120 actions
+               0.00 seconds creating final representation with 76 relevant facts, 35 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 715 states, to a max depth of 0
+               0.00 seconds total time
+

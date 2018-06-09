@@ -1,0 +1,70 @@
+
+ff: parsing domain file
+domain 'WORLDSENDANDBEYOND' defined
+ ... done.
+ff: parsing problem file
+problem 'AUTOGEN' defined
+ ... done.
+
+
+metric established (normalized to minimize): ((1.00*[RF0](TOTALINTEREST)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF0](TOTALINTEREST)) - () + 0.00)
+
+advancing to distance:   20
+                         19
+                         18
+                         17
+                         16
+                         15
+                         14
+                         13
+                         12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: FLYANDSTAY ORIGIN CITYH HOTELH_A
+        1: FLYANDSTAY CITYH CITYE HOTELE_A
+        2: FLYANDSTAY CITYE CITYK HOTELK_A
+        3: FLYANDSTAY CITYK CITYJ HOTELJ_A
+        4: FLYANDSTAY CITYJ CITYC HOTELC_A
+        5: FLYANDSTAY CITYC CITYI HOTELI_A
+        6: INCREASESTAY CITYK
+        7: FLYANDSTAY CITYI CITYF HOTELF_A
+        8: FLYANDSTAY CITYF CITYA HOTELA_A
+        9: FLYANDSTAY CITYA CITYG HOTELG_A
+       10: INCREASESTAY CITYA
+       11: INCREASESTAY CITYC
+       12: INCREASESTAY CITYE
+       13: INCREASESTAY CITYF
+       14: INCREASESTAY CITYG
+       15: INCREASESTAY CITYH
+       16: INCREASESTAY CITYI
+       17: INCREASESTAY CITYJ
+       18: FLYANDSTAY CITYG CITYB HOTELB_A
+       19: INCREASESTAY CITYB
+     
+
+time spent:    0.00 seconds instantiating 133 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 38 facts and 132 actions
+               0.00 seconds creating final representation with 37 relevant facts, 28 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 229 states, to a max depth of 0
+               0.00 seconds total time
+

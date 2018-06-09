@@ -1,0 +1,55 @@
+
+ff: parsing domain file
+domain 'WORLDSENDANDBEYOND' defined
+ ... done.
+ff: parsing problem file
+problem 'AUTOGEN' defined
+ ... done.
+
+
+metric established (normalized to minimize): ((1.00*[RF0](TOTALCOST)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF0](TOTALCOST)) - () + 0.00)
+
+advancing to distance:  100
+                         99
+                         98
+                         97
+                         96
+                         95
+                         94
+                         93
+                         92
+                         91
+                         90
+                         89
+                         88
+                         87
+                         86
+                         85
+                         84
+                         83
+                         82
+                         81
+                         80
+                         79
+                         78
+                         77
+                         76
+                         75
+
+best first search space empty! problem proven unsolvable.
+
+
+
+time spent:    0.00 seconds instantiating 60 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 82 facts and 60 actions
+               0.00 seconds creating final representation with 81 relevant facts, 45 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               2.69 seconds searching, evaluating 27921 states, to a max depth of 0
+               2.69 seconds total time
+
